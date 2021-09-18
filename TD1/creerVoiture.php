@@ -12,9 +12,9 @@
 
                 $voiture1 = new Voiture($_POST['marque'],$_POST['couleur'],$_POST['immatriculation']);
                 $voiture1->afficher();
-           /*echo $_POST['marque'];
-           echo $_POST['couleur'];
-           echo $_POST['immatriculation'];*/
+           /*echo $_GET['marque'];
+           echo $_GET['couleur'];
+           echo $_GET['immatriculation'];*/
         ?>          
     </body>
 </html>
