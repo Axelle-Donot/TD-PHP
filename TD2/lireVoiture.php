@@ -1,14 +1,8 @@
 <?php
-
-require_once 'Model.php';
-echo 'tests';
-
-$rep = Model::getPDO()->query('select * from Voiture');
-$tab_obj = $rep->fetchAll(PDO::FETCH_OBJ);
-
-foreach ($tab_obj as $key => $value) {
-    echo $value->immatriculation;
-    echo $value->couleur;
-    echo $value->marque;
-}
-?>
+  require_once('Voiture.php');
+  $tab_voit = Voiture::getAllVoitures();
+  //print_r($tab_voit);
+  foreach ($tab_voit as $key => $value) {
+  	$value->afficher();
+  }
+ ?>

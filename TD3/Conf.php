@@ -41,5 +41,7 @@ class Conf {
   static public function getDebug(){
     return self::$debug;
   }
+
+  
 }
 ?>

@@ -11,7 +11,7 @@
                 require_once('formulaireVoiture.html');
 
                 $voiture1 = new Voiture($_POST['marque'],$_POST['couleur'],$_POST['immatriculation']);
-                $voiture1->afficher();
+                $voiture1->save();
            /*echo $_GET['marque'];
            echo $_GET['couleur'];
            echo $_GET['immatriculation'];*/
