@@ -1,6 +1,6 @@
 <?php
 require_once('Model.php');
-class Voiture {
+class ModelVoiture {
 
   private $marque;
   private $couleur;
@@ -47,13 +47,13 @@ class Voiture {
   }
 
   // une methode d'affichage.
-  public function afficher() {
-    echo "<p> Voiture $this->immatriculation de marque $this->marque et de couleur $this->couleur </p>";
-  }
+  //public function afficher() {
+  //  echo "<p> Voiture $this->immatriculation de marque $this->marque et de couleur $this->couleur </p>";
+  //}
 
   public static function getAllVoitures(){
     $rep = Model::getPDO()->query('SELECT * FROM Voiture');
-    $rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+    $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');
     $tab_voit = $rep->fetchAll();
     return $tab_voit;
   }
@@ -71,7 +71,7 @@ class Voiture {
     $req_prep->execute($values);
 
     // On récupère les résultats comme précédemment
-    $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+    $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');
     $tab_voit = $req_prep->fetchAll();
     // Attention, si il n'y a pas de résultats, on renvoie false
     if (empty($tab_voit))
@@ -80,7 +80,7 @@ class Voiture {
   }
 
   public function save(){
-    $sql = "INSERT INTO Voiture (immatriculation, marque , couleur ) VALUES (:imm,:mar,:cou)";
+    $sql = "INSERT INTO ModelVoiture (immatriculation, marque , couleur ) VALUES (:imm,:mar,:cou)";
     $req_prep = Model::getPDO()->prepare($sql);
 
     $values = array(
@@ -91,7 +91,7 @@ class Voiture {
     try{
       $req_prep->execute($values);
     } catch(PDOException $e) {
-      if(PDOException $e) {
+      if(PDOException == $e) {
         if ($e->getCode() != 23000) throw $e;
       }
     }   
