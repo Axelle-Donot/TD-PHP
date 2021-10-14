@@ -52,7 +52,7 @@ class ModelVoiture {
   //}
 
   public static function getAllVoitures(){
-    $rep = Model::getPDO()->query('SELECT * FROM Voiture');
+    $rep = Model::getPDO()->query('SELECT * FROM voiture');
     $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');
     $tab_voit = $rep->fetchAll();
     return $tab_voit;
@@ -80,7 +80,7 @@ class ModelVoiture {
   }
 
   public function save(){
-    $sql = "INSERT INTO ModelVoiture (immatriculation, marque , couleur ) VALUES (:imm,:mar,:cou)";
+    $sql = "INSERT INTO voiture (immatriculation, marque , couleur ) VALUES (:imm,:mar,:cou)";
     $req_prep = Model::getPDO()->prepare($sql);
 
     $values = array(
@@ -91,9 +91,7 @@ class ModelVoiture {
     try{
       $req_prep->execute($values);
     } catch(PDOException $e) {
-      if(PDOException == $e) {
         if ($e->getCode() != 23000) throw $e;
-      }
     }   
   }
 }
