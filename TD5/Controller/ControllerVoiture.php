@@ -20,9 +20,16 @@ class ControllerVoiture {
         }else{
             $pagetitle = 'Détail de la voiture';
             $view = 'error.php';
-            $controleur='voiture';
+            $controller='Voiture';
             require File::build_path(array("View","view.php"));
         }
+    }
+    
+    public static function error(){
+        $pagetitle = 'Erreur';
+        $view = 'error.php';
+        $controller='Voiture';
+        require File::build_path(array("View","view.php"));
     }
 
     public static function create(){

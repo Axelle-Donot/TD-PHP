@@ -59,7 +59,7 @@ class ModelVoiture {
   }
 
   public static function getVoitureByImmat($immat) {
-    $sql = "SELECT * from Voiture WHERE immatriculation=:nom_tag";
+    $sql = "SELECT * from voiture WHERE immatriculation=:nom_tag";
     // Préparation de la requête
     $req_prep = Model::getPDO()->prepare($sql);
 
