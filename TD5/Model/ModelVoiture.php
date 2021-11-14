@@ -92,6 +92,21 @@ class ModelVoiture {
       $req_prep->execute($values);
   }
     
+    public static function updateVoitureByImmat($immat,$couleur,$marque){
+        $sql = "UPDATE voiture SET couleur =:co, marque=:ma WHERE immatriculation=:im";
+        // Préparation de la requête
+        $req_prep = Model::getPDO()->prepare($sql);
+
+        $values = array(
+            "im" => $immat,
+            "co" => $couleur,
+            "ma" => $marque
+            //nomdutag => valeur, ...
+        );
+        // On donne les valeurs et on exécute la requête
+        $req_prep->execute($values);
+    }
+    
     public function __toString() : string {
         $imma = htmlspecialchars($this -> immatriculation);
         $coul = htmlspecialchars($this -> couleur);
