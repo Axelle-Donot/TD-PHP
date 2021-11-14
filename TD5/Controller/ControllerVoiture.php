@@ -25,6 +25,16 @@ class ControllerVoiture {
         }
     }
     
+    public static function delete(){
+        $immat = $_GET['immat'];
+        ModelVoiture::deleteVoitureByImmat($immat);
+        $tab_v = ModelVoiture::getAllVoitures();
+        $pagetitle = 'Supprimer';
+        $view = 'deleted.php';
+        $controller='Voiture';
+        require File::build_path(array("View","view.php"));
+    }
+    
     public static function error(){
         $pagetitle = 'Erreur';
         $view = 'error.php';

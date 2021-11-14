@@ -78,6 +78,26 @@ class ModelVoiture {
         return false; 
     return $tab_voit[0];
   }
+    
+  public static function deleteVoitureByImmat($immat){
+      $sql = "DELETE from voiture WHERE immatriculation=:nom_tag";
+      // Préparation de la requête
+      $req_prep = Model::getPDO()->prepare($sql);
+
+      $values = array(
+          "nom_tag" => $immat
+          //nomdutag => valeur, ...
+      );
+      // On donne les valeurs et on exécute la requête
+      $req_prep->execute($values);
+  }
+    
+    public function __toString() : string {
+        $imma = htmlspecialchars($this -> immatriculation);
+        $coul = htmlspecialchars($this -> couleur);
+        $marque = htmlspecialchars($this -> marque);
+        return " $imma de marque $marque et de couleur $coul ";
+   }
 
   public function save(){
     $sql = "INSERT INTO voiture (immatriculation, marque , couleur ) VALUES (:imm,:mar,:cou)";
